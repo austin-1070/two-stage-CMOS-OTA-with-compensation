@@ -6,11 +6,24 @@
 
 ## Project Overview
 
-I completed this project to gain additional experience in analog IC design outside of school. My goal was to design a two-stage CMOS operational amplifier using LTspice and the TSMC 0.18 μm CMOS process while also meeting a set of performance specifications.
+I completed this project to gain additional experience in analog IC design outside school. 
+My goal was to design a two-stage CMOS operational transconductance amplifier using 
+LTspice with the TSMC 0.18 μm CMOS model while 
+also meeting a set of performance specifications.
 
-I first used hand calculations with IC design equations to estimate transistor dimensions, bias currents, and the compensation network. The circuit was then implemented in LTspice and refined through iterative simulation until all design targets were achieved. During this process, I gained a much deeper understanding of differential amplifiers, current mirrors, frequency compensation, pole-zero behavior, and the tradeoffs involved in analog circuit design.
+I first used hand calculations with IC design equations to estimate 
+transistor dimensions, bias currents, and the compensation network. 
+The circuit was then implemented in LTspice and refined through iterative 
+simulation until all design targets were achieved. During this process, I 
+gained a deeper understanding of differential amplifiers, pole-zero behavior, and the 
+tradeoffs involved in analog circuit design.
 
-The design methodology presented here was developed using concepts from *CMOS Analog Circuit Design* by Allen and Holberg along with several IEEE publications on two-stage CMOS operational amplifiers. These references served as learning resources throughout the project, while the circuit implementation, simulation, optimization, and verification were completed independently.
+The design methodology presented here was developed using concepts 
+from *CMOS Analog Circuit Design* by Allen and Holberg along with 
+several IEEE publications on two-stage CMOS operational amplifiers. 
+These references served as learning resources throughout the
+project, while the circuit implementation, simulation, optimization, 
+and verification were completed independently.
 
 ## Final Results
 
@@ -30,6 +43,8 @@ The transistor model used was ...
 
 unCox = 
 upCox = 
+
+
 <img width="583" height="358" alt="image" src="https://github.com/user-attachments/assets/a725f57c-d3ee-4e3a-827c-2960c43a8946" />
 
 The design was completed as follows:
@@ -54,18 +69,17 @@ These specifications were established before beginning the hand analysis and ser
 
 ### 2. Compensation Network
 
-First, the compensation capacitor and slew rate were calculated based on the desired bandwidth and load capacitance.
 
 <p align="center">
   <img width="505" height="245" alt="Screenshot 2026-07-18 003012" src="https://github.com/user-attachments/assets/7f3ea582-2877-423b-845b-e05d4abc377d" />
 </p>
-
-The compensating capacitor was calculated assuming the zero of the system is placed at 10 times higher the unity gain bandwidth (GBW). Then using the slew rate and Miller capacitor, the bias current was calculated as 20 μA.
+The compensating capacitor was calculated assuming the 
+zero of the system is placed at 10 times higher the unity gain bandwidth 
+(GBW). Then using the slew rate and Miller capacitor, the bias current was calculated as 20 μA.
 
 ---
 
 ### 3. Differential Input Stage (M1–M2)
-
 <p align="center">
   <img width="505" height="255" alt="image" src="https://github.com/user-attachments/assets/89201e1d-0c95-4ff1-95aa-d36e5e71ab4a" />
 </p>
@@ -76,27 +90,25 @@ was calculated. These values were then used to calculate the aspect ratio W/L of
 ---
 
 ### 4. Current Mirror Load and Tail Current Source (M3–M5)
-
-The aspect ratio of M3 was found based off the maximum input common range. Since M3 and M4 form a 1:1 current mirror, M4 was given the same transistor dimensions.
-  <img width="505" height="255" alt="image" src="https://github.com/user-attachments/assets/d5cdb028-cc03-45ca-8e45-22969a5af635" />
+<p align="center">
+  <img width="343" height="229" alt="image" src="https://github.com/user-attachments/assets/5f714e91-5895-4e17-b4ef-d2ce4fbaba88" />
 </p>
+The aspect ratio of M3 was found based off the maximum input common range. Since M3 and M4 form a 1:1 current mirror, M4 was given the same transistor dimensions.
+
 
 ---
 
 ### 5. Second Gain Stage (M6–M7)
-
-The second stage was sized to provide additional voltage gain and sufficient
-transconductance for the desired gain-bandwidth product while driving the output
-load.
-
-*(Show calculations.)*
+<p align="center">
+  <img width="699" height="270" alt="image" src="https://github.com/user-attachments/assets/c1cb9d26-6ba1-47e4-9105-1da74584709f" />
+</p>
+To further increase gain, M6 and M7 form a common-source amplifier that also mirrors the current from stage one.
 
 ---
 
 ### 6. Bias Network (M8)
 
-The diode-connected reference transistor establishes the reference current used
-to bias the remaining current mirrors.
+The diode-connected reference transistor establishes the reference current of 20 uA.
 
 *(Show mirror ratio calculations.)*
 
