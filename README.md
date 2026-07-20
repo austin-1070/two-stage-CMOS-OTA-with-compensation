@@ -20,7 +20,8 @@ tradeoffs involved in analog circuit design.
 The design methodology presented here was developed using concepts 
 from *CMOS Analog Circuit Design* by Allen and Holberg along with 
 several IEEE publications on two-stage CMOS operational amplifiers. 
- 
+
+ ---
 
 ## Final Results
 
@@ -29,11 +30,13 @@ several IEEE publications on two-stage CMOS operational amplifiers.
 | Supply Voltage | ±1.8 V | ±1.8 V |
 | Load Capacitance | 1 pF | 1 pF |
 | DC Gain | ≥ 60 dB | **78 dB** |
-| Unity-Gain Bandwidth | ≥ 50 MHz | **55 MHz** |
+| Unity-Gain Bandwidth | ≥ 50 MHz | **56 MHz** |
 | Phase Margin | ≥ 60° | **61.2°** |
 | Slew Rate | ≥ 20 V/µs | **36.26 V/µs** |
 | Power Dissipation | ≤ 2 mW | **0.67 mW** |
-| Input Common-Mode Range | -1 V to 1.6 V | **−1.8 V to +1.7 V** |
+| Input Common-Mode Range | -1 V to 1.6 V | **−1.0 V to +1.75 V** |
+
+---
 
 ## Design Methodology
 LTspice simulations were performed using the TSMC 0.18 µm BSIM3 model library (tsmc018.lib).
@@ -56,10 +59,10 @@ The process parameters used for the initial hand calculations were:
 
 | Specification | Target |
 |:--------------|-------:|
-| Supply Voltage | 1.8 V |
+| Supply Voltage | ±1.8 V |
 | CMOS Technology | 0.18 μm |
 | DC Gain | ≥ 60 dB |
-| Gain-Bandwidth Product | ≥ 50 MHz |
+| Unity Gain-Bandwidth (GBW) | ≥ 50 MHz |
 | Phase Margin | ≥ 60° |
 | Slew Rate | ≥ 20 V/μs |
 | Input Common-Mode Range | −1.0 V to 1.6 V |
@@ -166,10 +169,10 @@ The measured positive and negative slew rates were approximately **36.26 V/µs**
 ### Input Common-Mode Range
 
 <p align="center">
-  <img src="images/icmr.png" width="700">
+  <img width="1916" height="907" alt="image" src="https://github.com/user-attachments/assets/80834a71-6c54-4f7c-96c5-49eafa44119b" />
 </p>
 
-Unity-gain operation was maintained across an input common-mode range of approximately **−1.8 V to +1.7 V**.
+Unity-gain operation was maintained across an input common-mode range of approximately **−1.0 V to +1.75 V**.
 
 ### Power Consumption
 
