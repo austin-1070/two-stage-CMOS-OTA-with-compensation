@@ -1,7 +1,7 @@
 <h1 align="center">Two-Stage CMOS OTA with Miller Compensation</h1>
 
 <p align="center">
-  <img src="images/ota-miller.png" width="700">
+   <img width="862" height="588" alt="cover-sch" src="https://github.com/user-attachments/assets/2c998019-affa-4cb5-b707-80e0dc14ceb0" />
 </p>
 
 ## Project Overview
@@ -113,30 +113,57 @@ The diode-connected reference transistor establishes the reference current of 20
 
 ## Design Optimization
 
-The complete circuit was implemented in LTspice using the TSMC 0.18 μm
-model library. A DC operating-point analysis was first used to verify that all
-transistors remained in saturation. Device dimensions, bias currents, the Miller
-compensation capacitor, and the series nulling resistor were then iteratively
-adjusted until the target gain, bandwidth, phase margin, slew rate, and power
-consumption were achieved.
+The initial hand calculations provided a functional starting point for the OTA. The design was then refined through several simulation iterations until the target specifications were achieved.
 
-
-### Initial LTspice Implementation
+**Initial LTspice implementation**
 <p align="center">
   <img src="images/ota-og.png" width="700">
 </p>
 
-### Transistor and Bias Adjustments
-### Nulling Resistor Optimization
+ - Although functional, the initial simulations showed that the amplifier did not fully satisfy the desired gain, bandwidth, and stability requirements. 
+
+
+**Transistor optimization**
+- Adjusted the W/L ratio for several transistors to increase open-loop gain.
+- Changed L to 1 µm for each transistorx
+- Increased the reference current from 20 µA to 30 µA to improve bandwidth.
+  
+| Device | Initial W/L *(L = 0.5 µm)* |            Final W/L *(L = 1 µm)* |                                                           
+| ------ | -------------------------: | --------------------------------: | 
+| M1–M2  |                      21.36 |                             21.40 | 
+| M3–M4  |                       6.66 |                              6.66 |
+| M5     |                       1.28 |                              1.28 |
+| M6     |                      40.40 |                             40.40 |
+| M7     |                       3.85 |                              5.00 | 
+| M8     |                       1.28 |                              1.28 |
+
+
+
+**Compensation optimization**
+- Tuned the Miller compensation capacitor from 1 pF to 0.8 pF.
+- Added a 3 kΩ series nulling resistor to improve phase margin while maintaining bandwidth.
+
 
 ## Final Design
 
+<p align="center">
+  <img src="images/ota-miller.png" width="700">
+</p>
+
 ## Simulation Results
 
-### AC Response
-### Slew Rate
-### Input Common-Mode Range
-### DC Operating Point
+<p align="center">
+  <img src="images/ota-meetspec.png" width="700">
+</p>
+
+<p align="center">
+  <img src="images/slew-rate.png" width="700">
+</p>
+
+<p align="center">
+  <img src="images/icmr.png" width="700">
+</p>
+
 
 ## Design Tradeoffs
 
